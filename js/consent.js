@@ -101,7 +101,7 @@ var ELIGIBILITY_REQUIREMENTS = `
         DEFAULT:
             $5.00
 */
-var COMPENSATION = "$8.00";
+var COMPENSATION = "$5.00";
 
 /*
     Recruitment Service
@@ -212,6 +212,10 @@ $(document).ready(function (){
         // Write to Database
         let path = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/consentData';
         writeRealtimeDatabase(path, CONSENT_DATA);
+
+        // Write to Database Metadata
+        let path_meta = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/metadata/experimentCompleted';
+        writeRealtimeDatabase(path_meta, false);
 
         // Load Instructions
         $('#instructions-main-content').load("html/instructions.html");
