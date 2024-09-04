@@ -31,6 +31,9 @@ import {
 // Database Path
 var COMPLETE_DB_PATH        = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/userFeedback';
 
+// Write to Database Metadata
+let path_meta = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/metadata/experimentCompleted';
+writeRealtimeDatabase(path_meta, true);
 
 /******************************************************************************
     RUN ON PAGE LOAD
@@ -62,16 +65,6 @@ $(document).ready(function (){
         */
         //   Redirect URL for first study (first 20 participants)
         //window.location.replace("https://app.prolific.com/submissions/complete?cc=C13CL3ZR");
-        //  Redirect URL for second study (second 20 participants)
-        //window.location.replace("https://app.prolific.com/submissions/complete?cc=CNTZC8D5");
-        //  Redirect URL for Experiment 02 (explanationstyleN) (pilot 10 participants)
-        //window.location.replace("https://app.prolific.com/submissions/complete?cc=C10HG17R");
-        //  Redirect URL for Experiment 02 (explanationstyleN with eplanations file v12) (pilot 10 participants)
-        //window.location.replace("https://app.prolific.com/submissions/complete?cc=C1DYD2KB");
-        //  Redirect URL for Experiment 02 (explanationstyleN with eplanations file v14) (pilot 10 participants)
-        //window.location.replace("https://app.prolific.com/submissions/complete?cc=C1E3B53O");
-        //  Redirect URL for Experiment 02 (explanationstyleN with eplanations file v15) (pilot 10 participants)
-        //window.location.replace("https://app.prolific.com/submissions/complete?cc=C1AJUXDE");
         //  Redirect URL for Experiment 02 (new) 22 Aug. 2024
         window.location.replace("https://app.prolific.com/submissions/complete?cc=C6ZNU6PF");
     }
