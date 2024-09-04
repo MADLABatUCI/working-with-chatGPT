@@ -36,7 +36,7 @@ import {
 //      Task Information
 var CURRENT_TASK                = 1;
 var TOTAL_TRIALS                = 40;
-var EXPLANATION_OPTIONS         = 9;
+var EXPLANATION_OPTIONS         = 4;
 var DATA_FILE                   = "data/explanations15_new_42_350_Aug20_withAnsPrefix.json";
 
 //      Database Path
@@ -138,7 +138,7 @@ async function getParticipantTrialQuestions() {
     const maxCompletionTimeMinutes = 90;
 
 
-    let numCategories = 10; // Total number of categories
+    let numCategories = 1; // Total number of categories
     let numBins = 4; // Total number of confidence bins
     let numQuestions = 35; // Total number of questions per category
 
@@ -155,11 +155,11 @@ async function getParticipantTrialQuestions() {
             let lookupTable = 'Table_' + category + '_' + cbin;
             // Append lookup table name to LOOKUP_TABLES var (needed for finalization)
             LOOKUP_TABLES.push(lookupTable);
-            let numDraws = 1; // we sample one question per confidence bin per category (to create 40 questions total)
+            let numDraws = 10; // we sample TEN question per confidence bin (to create 40 questions total)
 
-            let numQuestionsperbin;
-            if (cbin==0) numQuestionsperbin = 5; // we have 5 questions per category in the first confidence bin (0.2-0.4)
-            if (cbin>0) numQuestionsperbin = 10; // we have 10 questions per category in the remaining confidence bins (0.4-0.6; 0.6-0.8; 0.8-1.0)
+            let numQuestionsperbin = 84;    // The FILE we use has 84 questions per confidence bin
+            //if (cbin==0) numQuestionsperbin = 5; // we have 5 questions per category in the first confidence bin (0.2-0.4)
+            //if (cbin>0) numQuestionsperbin = 10; // we have 10 questions per category in the remaining confidence bins (0.4-0.6; 0.6-0.8; 0.8-1.0)
 
             // NOTE:
             //  The condition count has now been increased form numQuestionsperbin to numQuestionsperbin * EXPLANATION_OPTIONS
