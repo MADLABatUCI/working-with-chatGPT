@@ -322,9 +322,10 @@ mark {
 }
 .instruction-likert li {
     display:inline-block;
-    width:5.5%;
+    width: 4%;
     text-align:center;
     vertical-align: top;
+    margin-bottom: 1em;
 }
 .instruction-likert li label {
     width:100%;

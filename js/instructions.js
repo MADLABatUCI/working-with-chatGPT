@@ -410,7 +410,7 @@ $(document).ready(function (){
             lowerOpacity();
             restoreOpacity("#instruction-task-likert-scale-container");
             $('#next-button').prop("disabled", true);
-            $('input[value="25"]').click(function(){
+            $('input[value="0"]').click(function(){
                 $('#next-button').prop("disabled", false);
             });
             removeAllHighlighting();
