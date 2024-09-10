@@ -56,7 +56,7 @@ Users of ChatGPT often report that the system is overconfident in its answers an
         DEFAULT:
             30 minutes
 */
-var TIME_COMMITMENT = "40-50 minutes";
+var TIME_COMMITMENT = "25-35 minutes";
 
 /*
     Benefits and Risks
