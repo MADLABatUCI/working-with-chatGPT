@@ -63,10 +63,10 @@ $(document).ready(function (){
         /*
             Redirect participants back to prolific after the study.
         */
-        //   Redirect URL for first study (first 20 participants)
-        //window.location.replace("https://app.prolific.com/submissions/complete?cc=C13CL3ZR");
         //  Redirect URL for Experiment 02 (new) 22 Aug. 2024
-        window.location.replace("https://app.prolific.com/submissions/complete?cc=C6ZNU6PF");
+        //window.location.replace("https://app.prolific.com/submissions/complete?cc=C6ZNU6PF");
+        //  Redirect URL for Open Ended Experiment 01 (new) 10 Sep. 2024
+        window.location.replace("https://app.prolific.com/submissions/complete?cc=C1031R79");
     }
 
     function submitFeedback() {
