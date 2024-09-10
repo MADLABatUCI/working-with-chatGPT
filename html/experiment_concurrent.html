@@ -42,15 +42,15 @@ This file contains all of the task information for the experiment.
                 <!-- Trial Question Topic Information -->
                 <div class="col-12 text-left" id="task-question-container-topic">
                     <h5 id="task-question-container-topic-header">
-                        <span>
+                        <!--<span>
                             Topic :
                         </span>
-                        <!-- Update trial question topic information here -->
+                        <!-- Update trial question topic information here -- >
                         <span id="task-question-container-topic-name">
                             Name of Topic
-                        </span>
-                        <span style="float: right">
-                            Question
+                        </span>-->
+                        <span style="float: left">
+                            Question:
                             <span id="trialCounter">
 
                             </span>
@@ -64,7 +64,7 @@ This file contains all of the task information for the experiment.
                 <!-- Trial Question Information (actual question) -->
                 <div class="col-12 text-center" id="trial-task-container">
                     <!-- Update trial question here -->
-                    <h5 class="trial-task trial-question trial-information" id="trial-task">
+                    <h5 class="trial-task trial-question trial-information" id="trial-task" style="user-select: none;">
                         Trial Question Goes Here
                     </h5>
                 </div>
@@ -76,9 +76,9 @@ This file contains all of the task information for the experiment.
             |       is shown on the right panel.                |
             ---------------------------------------------------->
             <div class="row" id="task-options-and-gpt-container">
-                <!-- Trial Options (A, B, C, and D) -->
+                <!-- Trial Options (A, B, C, and D) -- >
                 <div class="col-5" id="task-options-container">
-                    <!-- Trial Options - Header -->
+                    <!-- Trial Options - Header -- >
                     <div class="row justify-content-between" id="task-options-header-container">
                         <div class="col-12 text-center" id="task-options-header">
                             <h4 id="task-options-header-text">
@@ -86,9 +86,9 @@ This file contains all of the task information for the experiment.
                             </h4>
                         </div>
                     </div>
-                    <!-- Trial Options - Choices -->
+                    <!-- Trial Options - Choices -- >
                     <div class="row justify-content-between" id="task-options-choices-container">
-                        <!-- Option A -->
+                        <!-- Option A -- >
                         <div class="col-12" id="task-options-choices-container-A">
                             <button id="participant-trial-option-A" name="patA" type="button" class="btn btn-dark participant-trial-option" disabled>
                                 <span class="float-left">
@@ -98,7 +98,7 @@ This file contains all of the task information for the experiment.
                                 </span>
                             </button>
                         </div>
-                        <!-- Option B -->
+                        <!-- Option B -- >
                         <div class="col-12" id="task-options-choices-container-B">
                             <button id="participant-trial-option-B" name="patB" type="button" class="btn btn-dark participant-trial-option" disabled>
                                 <span class="float-left">
@@ -108,7 +108,7 @@ This file contains all of the task information for the experiment.
                                 </span>
                             </button>
                         </div>
-                        <!-- Option C -->
+                        <!-- Option C -- >
                         <div class="col-12" id="task-options-choices-container-C">
                             <button id="participant-trial-option-C" name="patC" type="button" class="btn btn-dark participant-trial-option" disabled>
                                 <span class="float-left">
@@ -118,7 +118,7 @@ This file contains all of the task information for the experiment.
                                 </span>
                             </button>
                         </div>
-                        <!-- Option D -->
+                        <!-- Option D -- >
                         <div class="col-12" id="task-options-choices-container-D">
                             <button id="participant-trial-option-D" name="patD" type="button" class="btn btn-dark participant-trial-option" disabled> 
                                 <span class="float-left">
@@ -129,14 +129,14 @@ This file contains all of the task information for the experiment.
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-- Chat GPT Input/Help -->
-                <div class="col-7" id="task-gpt-container">
+                <div class="col-12" id="task-gpt-container">
                     <!-- Chat GPT Header -->
                     <div class="row" id="task-gpt-header-container">
                         <div class="col-12 text-center">
                             <p id="task-gpt-header-text">
-                                Default (GPT-3.5)
+                                Default (GPT-4o)
                             </p>
                         </div>
                     </div>
@@ -149,7 +149,7 @@ This file contains all of the task information for the experiment.
                         <!-- Chat GPT Explanation -->
                         <div class="col-11 text-left" id="task-gpt-text-box-explanation-container">
                             <p id="task-gpt-text-box-explanation-text">
-                                The response generated by chatGPT 3.5 will be rendered here.
+                                The response generated by ChatGPT 4o will be rendered here.
                             </p>
                         </div>
                     </div>
@@ -184,9 +184,34 @@ This file contains all of the task information for the experiment.
                         <div class="col-12 text-center" id="task-likert-scale-radio-button-container">
                             <ul class='likert' id="task-likert-scale-radio-button-selection">
                                 <li>
+                                    <label>0</label>
+                                    <input type="radio" name="likert" value="0">
+                                    <label></label>
+                                </li>
+                                <li>
+                                    <label>5</label>
+                                    <input type="radio" name="likert" value="5">
+                                    
+                                </li>
+                                <li>
+                                    <label>10</label>
+                                    <input type="radio" name="likert" value="10">
+                                    
+                                </li>
+                                <li>
+                                    <label>15</label>
+                                    <input type="radio" name="likert" value="15">
+                                    
+                                </li>
+                                <li>
+                                    <label>20</label>
+                                    <input type="radio" name="likert" value="20">
+                                    
+                                </li>
+                                <li>
                                     <label>25</label>
                                     <input type="radio" name="likert" value="25">
-                                    <label>Guessing (Chance)</label>
+                                    <label></label>
                                 </li>
                                 <li>
                                     <label>30</label>
@@ -261,7 +286,7 @@ This file contains all of the task information for the experiment.
                                 <li>
                                     <label>100</label>
                                     <input type="radio" name="likert" value="100">
-                                    <label>Absolutely Certain</label>
+                                    <label></label>
                                 </li>
                                 </ul>
                         </div>

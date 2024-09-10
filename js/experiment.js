@@ -36,8 +36,8 @@ import {
 //      Task Information
 var CURRENT_TASK                = 1;
 var TOTAL_TRIALS                = 40;
-var EXPLANATION_OPTIONS         = 4;
-var DATA_FILE                   = "data/explanations15_new_42_350_Aug20_withAnsPrefix.json";
+var EXPLANATION_OPTIONS         = 10;
+var DATA_FILE                   = "data/openquestions_366_10sep2024_explanationstyle10_v01.json";
 
 //      Database Path
 var TRIAL_DB_PATH               = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/trialData';
@@ -168,34 +168,37 @@ async function getParticipantTrialQuestions() {
             let assignedQuestion = await blockRandomization(studyId, lookupTable, numQuestionsperbin*EXPLANATION_OPTIONS,
                 maxCompletionTimeMinutes, numDraws); // the await keyword is mandatory
             // Convert the assignedQuestion to a number
-            assignedQuestion = parseInt(assignedQuestion);
+            //console.log(assignedQuestion);
+            for (let thisQ = 0; thisQ < assignedQuestion.length; thisQ++) {
+                //console.log(thisQ + ") " + assignedQuestion[thisQ]);
+                let thisAssignedQuestion = parseInt(assignedQuestion[thisQ]);
 
-            // NOTE:
-            //  assignedQuestion will be broken down into two different numbers to determine the question and explanation
-            //
-            //  Explanation = assignedQuestion % EXPLANATION_OPTIONS
-            //
-            //  Question    = (assignedQuestion - Explanation) / EXPLANATION_OPTIONS
+                // NOTE:
+                //  thisAssignedQuestion will be broken down into two different numbers to determine the question and explanation
+                //
+                //  Explanation = thisAssignedQuestion % EXPLANATION_OPTIONS
+                //
+                //  Question    = (thisAssignedQuestion - Explanation) / EXPLANATION_OPTIONS
 
-            // Get the explanation that will be shown to the participant
-            let explanationToShow = assignedQuestion % EXPLANATION_OPTIONS;
+                // Get the explanation that will be shown to the participant
+                let explanationToShow = thisAssignedQuestion % EXPLANATION_OPTIONS;
 
-            // Get the question that will be shown to the participant
-            let questionToShow = (assignedQuestion - explanationToShow) / EXPLANATION_OPTIONS;
+                // Get the question that will be shown to the participant
+                let questionToShow = (thisAssignedQuestion - explanationToShow) / EXPLANATION_OPTIONS;
 
-            // Now, go find which question this is from the list of questions and add to the list for this participant
-            // The Topic_number and bin_wide_number are all in order
-            // We just need to keep track of how far along we are and keep adding to our start index
-            explanationTrials.push(explanationToShow);
-            participantTrials.push(startIndex + questionToShow);
-            startIndex += numQuestionsperbin;
+                // Now, go find which question this is from the list of questions and add to the list for this participant
+                // The Topic_number and bin_wide_number are all in order
+                // We just need to keep track of how far along we are and keep adding to our start index
+                explanationTrials.push(explanationToShow);
+                participantTrials.push(startIndex + questionToShow);
 
-            if (DEBUG_EXPERIMENT_CONCURRENT){
+                //if (DEBUG_EXPERIMENT_CONCURRENT){
                 console.log( "For category " + category + " and confidence bin " + cbin + " we assigned question #" + questionToShow + " along with explanation #" + (explanationToShow + 1) + " from that bin and category");
+                //};
+
+                $('#expCountdown').text(TOTAL_TRIALS - participantTrials.length);
             };
-
-            $('#expCountdown').text(TOTAL_TRIALS - participantTrials.length);
-
+            startIndex += numQuestionsperbin;
         };
 
     };
@@ -219,10 +222,10 @@ $(document).ready(function (){
     //  Shuffle trials for this experiment!
     shuffle(participantTrials, explanationTrials);
     expTrialList = participantTrials.slice(0, TOTAL_TRIALS).map(i => trialQuestions[i]);
-    if (DEBUG_EXPERIMENT_CONCURRENT){
-        console.log("Trials\n", participantTrials);
-        console.log("Explanation\n", explanationTrials);
-    };
+    //if (DEBUG_EXPERIMENT_CONCURRENT){
+    console.log("Trials\n", participantTrials);
+    console.log("Explanation\n", explanationTrials);
+    //};
     
 
     /******************************************************************************
@@ -253,16 +256,20 @@ $(document).ready(function (){
         }
 
         // Update the Question TopicList[trial]
-        $('#task-question-container-topic-name').text(trialList[trial].Topic);
+        /* There are no topics for this experiment */
+        //$('#task-question-container-topic-name').text(trialList[trial].Topic);
 
         //  Update Question
+        console.log(trialList);
+        console.log(trial)
         $('#trial-task').html(trialList[trial].Question); 
 
         //  Update Options
-        $('#participant-trial-option-text-A').text(trialList[trial].A); 
-        $('#participant-trial-option-text-B').text(trialList[trial].B); 
-        $('#participant-trial-option-text-C').text(trialList[trial].C); 
-        $('#participant-trial-option-text-D').text(trialList[trial].D); 
+        /* There are no options for this experiment */
+        //$('#participant-trial-option-text-A').text(trialList[trial].A); 
+        //$('#participant-trial-option-text-B').text(trialList[trial].B); 
+        //$('#participant-trial-option-text-C').text(trialList[trial].C); 
+        //$('#participant-trial-option-text-D').text(trialList[trial].D); 
 
         // Update GPT Explanation
         $('#task-gpt-text-box-explanation-text').html(trialList[trial]['explanationstyle' + (explanationList[trial] + 1)]);
@@ -279,14 +286,14 @@ $(document).ready(function (){
 
     /*
         Function to control Option Selected
-    */
+    * /
     function enableParticipantOptionSelection() {
         /*
             Enable Options A, B, C, and D
 
             This needs to be done to allow participants to make
             their own classification decision.
-        */
+        * /
         $('#participant-trial-option-A').prop('disabled', false);
         $('#participant-trial-option-B').prop('disabled', false);
         $('#participant-trial-option-C').prop('disabled', false);
@@ -300,7 +307,7 @@ $(document).ready(function (){
             This needs to be done when participants are making
             their assessment on how the probability GPT is
             correct.
-        */
+        * /
         $('#participant-trial-option-A').prop('disabled', true);
         $('#participant-trial-option-B').prop('disabled', true);
         $('#participant-trial-option-C').prop('disabled', true);
@@ -310,7 +317,7 @@ $(document).ready(function (){
     function replaceClass(element, remove, add) {
         /*
             Use jQuery to replace the class of the given element.
-        */
+        * /
 
         $(element).removeClass(remove);
         $(element).addClass(add);
@@ -323,7 +330,7 @@ $(document).ready(function (){
             Once they make their own selection of A, B, C, or D, we
             need to set the PARTICIPANT_OWN_SELECTION variable to
             their selected value and then enable the Submit button.
-        */
+        * /
         // Set Time of Selection
         PARTICIPANT_OWN_SELECT_TIMER = new Date();
 
@@ -335,7 +342,7 @@ $(document).ready(function (){
         // Define the selected option as the last button clicked
         PARTICIPANT_OWN_SELECTION = event.data.param1;
         // Update the color of the currently selected option
-        replaceClass('#participant-trial-option-' + PARTICIPANT_OWN_SELECTION, "btn-dark", "btn-primary");
+        //replaceClass('#participant-trial-option-' + PARTICIPANT_OWN_SELECTION, "btn-dark", "btn-primary");
 
         //  Enable the Submit button
         $('#proceedMainexperiment').prop('disabled', false);
@@ -343,7 +350,7 @@ $(document).ready(function (){
         if (DEBUG_EXPERIMENT_CONCURRENT) {
             console.log("Participant Selected :", PARTICIPANT_OWN_SELECTION);
         }
-    };
+    };*/
 
     /*
         Function to control Radio Button Selection
@@ -367,13 +374,13 @@ $(document).ready(function (){
         $('#proceedMainexperiment').prop('disabled', false);
 
         if (DEBUG_EXPERIMENT_CONCURRENT) {
-            console.log("Radio Button Selected, GPT Prob :", PROB_GPT_CORRECT);
-        }
+        console.log("Radio Button Selected, GPT Prob :", PROB_GPT_CORRECT);
+        };
     };
 
     /*
         Functions to control experiment Phases
-    */
+    * /
     function nextPhase() {
         /*
             Move onto the next phase of the task.
@@ -382,7 +389,7 @@ $(document).ready(function (){
             the participant will need to make their own decision with GPT
             assistance. To do this we need to disable the GPT likert container
             and enable selection of options A, B, C, and D.
-        */
+        * /
         if (DEBUG_EXPERIMENT_CONCURRENT) {
             console.log("Phase 1 (radio button clicked) :", PROB_GPT_CORRECT);
         }
@@ -397,7 +404,7 @@ $(document).ready(function (){
         $('input[type=radio').attr('disabled', true);
 
         // Enable Options A, B, C, and D
-        enableParticipantOptionSelection();
+        //enableParticipantOptionSelection();
 
         //  Disable the Submit button
         $('#proceedMainexperiment').prop('disabled', true);
@@ -409,7 +416,7 @@ $(document).ready(function (){
         //  This ensures that the next time the submit button is
         //  pressed, the experiment will move onto the next task.
         SUBMIT_OWN_CLASSIFICATION = true;
-    };
+    };*/
 
     function nextTask() {
         /*
@@ -433,9 +440,9 @@ $(document).ready(function (){
         }
 
         // Remove highlighting of option selected
-        replaceClass('#participant-trial-option-' + PARTICIPANT_OWN_SELECTION, "btn-primary", "btn-dark");
+        //replaceClass('#participant-trial-option-' + PARTICIPANT_OWN_SELECTION, "btn-primary", "btn-dark");
         // Disable option buttons
-        disableParticipantOptionSelection();
+        //disableParticipantOptionSelection();
 
         // Restore Likert container
         // Make the Opacity of the task-likert-scale-container 1
@@ -454,13 +461,13 @@ $(document).ready(function (){
             {
                 "trialStartTime": TRIAL_START_TIME.toString(),
                 "trialEndTime": Date().toString(),
-                "questionID": expTrialList[CURRENT_TASK - 1]['question_id'],
+                "questionID": expTrialList[CURRENT_TASK - 1]['id'],
                 "questionIndex": participantTrials[CURRENT_TASK - 1],
                 "explanationStyle": explanationTrials[CURRENT_TASK - 1] + 1,
                 "probGPTCorrect": PROB_GPT_CORRECT,
                 "probGPTCorrectTime": PROB_GPT_CORRECT_TIMER - TRIAL_START_TIME,
-                "patOwnSelection": PARTICIPANT_OWN_SELECTION,
-                "patOwnSelectionTime": PARTICIPANT_OWN_SELECT_TIMER - TRIAL_CURRENT_TIME
+                //"patOwnSelection": PARTICIPANT_OWN_SELECTION,
+                //"patOwnSelectionTime": PARTICIPANT_OWN_SELECT_TIMER - TRIAL_CURRENT_TIME
             }
         );
 
@@ -471,11 +478,11 @@ $(document).ready(function (){
         // Set the SUBMIT_OWN_CLASSIFICATION variable to False
         //  This ensures that the next time the submit button is
         //  pressed, the experiment will move onto phase 2.
-        SUBMIT_OWN_CLASSIFICATION = false;
+        //SUBMIT_OWN_CLASSIFICATION = false;
         // Set the PARTICIPANT_OWN_SELECTION variable to null
         //  This way we do not have any stored in memory
-        PARTICIPANT_OWN_SELECTION = null;
-        PARTICIPANT_OWN_SELECT_TIMER = null;
+        //PARTICIPANT_OWN_SELECTION = null;
+        //PARTICIPANT_OWN_SELECT_TIMER = null;
 
         TRIAL_START_TIME = null;
         TRIAL_CURRENT_TIME = null;
@@ -550,8 +557,14 @@ $(document).ready(function (){
                 2.b) Click Submit
                 3)   Move onto next trial
         */
+        nextTask();
+        if (CURRENT_TASK > TOTAL_TRIALS){
+            console.log("All trials done");
+            LOOKUP_TABLES.forEach((table) => finalizeBlockRandomization(EXPERIMENT_DATABASE_NAME, table));
+            allTasksDone();
+        }
     
-        if (SUBMIT_OWN_CLASSIFICATION) {
+        /*if (SUBMIT_OWN_CLASSIFICATION) {
             nextTask();
             if (CURRENT_TASK > TOTAL_TRIALS){
                 console.log("All trials done");
@@ -560,7 +573,7 @@ $(document).ready(function (){
             }
         } else {
             nextPhase();
-        }
+        }*/
     };
 
     //  Task Information
@@ -574,10 +587,10 @@ $(document).ready(function (){
     $('#task-likert-scale-radio-button-selection li input').click(likertRadioSelect);
 
     //  Handle Option Selection
-    $('#participant-trial-option-A').click({param1: "A"}, optionSelected);
-    $('#participant-trial-option-B').click({param1: "B"}, optionSelected);
-    $('#participant-trial-option-C').click({param1: "C"}, optionSelected);
-    $('#participant-trial-option-D').click({param1: "D"}, optionSelected);
+    //$('#participant-trial-option-A').click({param1: "A"}, optionSelected);
+    //$('#participant-trial-option-B').click({param1: "B"}, optionSelected);
+    //$('#participant-trial-option-C').click({param1: "C"}, optionSelected);
+    //$('#participant-trial-option-D').click({param1: "D"}, optionSelected);
 
     //  Handle Proceeding in Experiment
     $('#proceedMainexperiment').click(proceed);
