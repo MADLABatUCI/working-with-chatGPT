@@ -58,7 +58,7 @@ var DEBUG_INSTRUCTIONS          = DEBUG;
 
 // Instruction Metadata
 var CURRENT_INSTRUCTION_PAGE    = 1;
-var TOTAL_INSTRUCTION_PAGES     = 12;
+var TOTAL_INSTRUCTION_PAGES     = 10;
 var PREVIOUS_BUTTON_DISABLED    = true;
 var NEXT_BUTTON_PROCEED         = false;
 
@@ -392,26 +392,21 @@ $(document).ready(function (){
             $('#instruction-example-task-container').attr("hidden", false);
         } else if (CURRENT_INSTRUCTION_PAGE == 3){
             lowerOpacity();
-            restoreOpacity("#instruction-task-question-container-topic");
-            removeAllHighlighting();
-            highlightTopicHeader(true);
-        } else if (CURRENT_INSTRUCTION_PAGE == 4){
-            lowerOpacity();
             restoreOpacity("#instruction-trial-task-container");
             removeAllHighlighting();
             highlightQuestion(true);
-        } else if (CURRENT_INSTRUCTION_PAGE == 5){
+        } else if (CURRENT_INSTRUCTION_PAGE == 4){
             lowerOpacity();
             restoreOpacity("#instruction-task-gpt-container");
             removeAllHighlighting();
             highlightGPTExplanation(true);
-        } else if (CURRENT_INSTRUCTION_PAGE == 6){
+        } else if (CURRENT_INSTRUCTION_PAGE == 5){
             $('#next-button').prop("disabled", false);
             lowerOpacity();
             restoreOpacity("#instruction-task-likert-scale-container");
             removeAllHighlighting();
             highlightLikertScale(true);
-        } else if (CURRENT_INSTRUCTION_PAGE == 7){
+        } else if (CURRENT_INSTRUCTION_PAGE == 6){
             lowerOpacity();
             restoreOpacity("#instruction-task-likert-scale-container");
             $('#next-button').prop("disabled", true);
@@ -420,7 +415,7 @@ $(document).ready(function (){
             });
             removeAllHighlighting();
             highlightLikertScaleButton(true, "25");
-        } else if (CURRENT_INSTRUCTION_PAGE == 8){
+        } else if (CURRENT_INSTRUCTION_PAGE == 7){
             lowerOpacity();
             restoreOpacity("#instruction-task-likert-scale-container");
             $('#next-button').prop("disabled", true);
@@ -429,7 +424,7 @@ $(document).ready(function (){
             });
             removeAllHighlighting();
             highlightLikertScaleButton(true, "100");
-        } else if (CURRENT_INSTRUCTION_PAGE == 9){
+        } else if (CURRENT_INSTRUCTION_PAGE == 8){
             lowerOpacity();
             restoreOpacity("#instruction-task-submit-button-container");
             $('#next-button').prop("disabled", true);
@@ -440,32 +435,13 @@ $(document).ready(function (){
                 highlightSubmitButton(false);
                 console.log("Supposed to un-highlight button");
             });
-        } else if (CURRENT_INSTRUCTION_PAGE == 10){
+        } else if (CURRENT_INSTRUCTION_PAGE == 9){
             $('#next-button').prop("disabled", false);
             lowerOpacity();
             restoreOpacity("#instruction-task-options-container");
             removeAllHighlighting();
             highlightOptions(true);
-        } else if (CURRENT_INSTRUCTION_PAGE == 11){
-            $('#instruction-example-task-container').attr("hidden", false);
-            lowerOpacity();
-            restoreOpacity("#instruction-task-options-container");
-            restoreOpacity("#instruction-task-submit-button-container");
-            $('#next-button').prop("disabled", true);
-            $('#instruction-proceedMainexperiment').prop("disabled", true);
-            $('#instruction-participant-trial-option-B').click(function(){
-                highlightOptionsButton(false, "B");
-                replaceClass('#instruction-participant-trial-option-B', "btn-dark", "btn-primary");
-                highlightSubmitButton(true);
-                $('#instruction-proceedMainexperiment').prop("disabled", false);
-            });
-            $('#instruction-proceedMainexperiment').click(function(){
-                highlightSubmitButton(false);
-                $('#next-button').prop("disabled", false);
-            });
-            removeAllHighlighting();
-            highlightOptionsButton(true, "B");
-        } else if (CURRENT_INSTRUCTION_PAGE == 12){
+        } else if (CURRENT_INSTRUCTION_PAGE == 10){
             restoreAllOpacity();
             removeAllHighlighting();
             $('#instruction-example-task-container').attr("hidden", true);
