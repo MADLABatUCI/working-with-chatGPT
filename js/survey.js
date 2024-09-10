@@ -33,16 +33,16 @@ var DEBUG_SURVEY                    = DEBUG;
 
 //      Survey Information
 var TOPIC_ABILITY_DICT = {
-    "Anatomy"                       : null,
-    "Global Facts"                  : null,
-    "High School Chemistry"         : null,
-    "High School Macroeconomics"    : null,
-    "High School Physics"           : null,
-    "High School World Histroy"     : null,
-    "Machine Learning"              : null,
-    "Philosophy"                    : null,
-    "Professional Psychology"       : null,
-    "Public Relations"              : null
+    "Sports"            : null,
+    "History"           : null,
+    "Geography"         : null,
+    "Entertainment"     : null,
+    "Science"           : null,
+    "Technology"        : null,
+    "Politics"          : null,
+    "Mythology"         : null,
+    "Religion"          : null,
+    "Culture & Society" : null
 };
 var TOPICS_RANKED                   = 0;
 

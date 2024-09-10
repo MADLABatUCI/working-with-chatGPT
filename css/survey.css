@@ -67,7 +67,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 }
 .likert-legend li {
     display:inline-block;
-    width:5.5%;
+    width:4%;
     text-align:center;
 }
 .likert-legend li label {
@@ -102,7 +102,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 }
 .likert-topic li {
     display:inline-block;
-    width:5.5%;
+    width:4%;
     text-align:center;
     vertical-align: top;
 }
@@ -138,7 +138,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
     background-color: #5e4fa2;
 }
 /*  Input Radio Button Styling  */
-input[name="Anatomy"] {
+input[name="Sports"] {
     position:relative;
     display: block;
     margin: auto;
@@ -146,7 +146,7 @@ input[name="Anatomy"] {
     width: 100%;
     height: 1.5em
 }
-input[name="Global Facts"] {
+input[name="History"] {
     position:relative;
     display: block;
     margin: auto;
@@ -154,7 +154,7 @@ input[name="Global Facts"] {
     width: 100%;
     height: 1.5em
 }
-input[name="High School Chemistry"] {
+input[name="Geography"] {
     position:relative;
     display: block;
     margin: auto;
@@ -162,7 +162,7 @@ input[name="High School Chemistry"] {
     width: 100%;
     height: 1.5em
 }
-input[name="High School Macroeconomics"] {
+input[name="Entertainment"] {
     position:relative;
     display: block;
     margin: auto;
@@ -170,7 +170,7 @@ input[name="High School Macroeconomics"] {
     width: 100%;
     height: 1.5em
 }
-input[name="High School Physics"] {
+input[name="Science"] {
     position:relative;
     display: block;
     margin: auto;
@@ -178,7 +178,7 @@ input[name="High School Physics"] {
     width: 100%;
     height: 1.5em
 }
-input[name="High School World History"] {
+input[name="Technology"] {
     position:relative;
     display: block;
     margin: auto;
@@ -186,7 +186,7 @@ input[name="High School World History"] {
     width: 100%;
     height: 1.5em
 }
-input[name="Machine Learning"] {
+input[name="Politics"] {
     position:relative;
     display: block;
     margin: auto;
@@ -194,7 +194,7 @@ input[name="Machine Learning"] {
     width: 100%;
     height: 1.5em
 }
-input[name="Phyilosophy"] {
+input[name="Mythology"] {
     position:relative;
     display: block;
     margin: auto;
@@ -202,7 +202,7 @@ input[name="Phyilosophy"] {
     width: 100%;
     height: 1.5em
 }
-input[name="Professional Psychology"] {
+input[name="Religion"] {
     position:relative;
     display: block;
     margin: auto;
@@ -210,7 +210,7 @@ input[name="Professional Psychology"] {
     width: 100%;
     height: 1.5em
 }
-input[name="Public Relations"] {
+input[name="Culture & Society"] {
     position:relative;
     display: block;
     margin: auto;
