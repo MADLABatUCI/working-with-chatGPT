@@ -135,8 +135,8 @@ var COMPREHENTION_QUIZ = "";
         DEFAULT:
             None...Add your name!
 */
-var LEAD_RESEARCHER = "Aakriti Kumar";
-var LEAD_RESEARCHER_EMAIL   = "aakritk@uci.edu";
+var LEAD_RESEARCHER = "Heliodoro Tejeda";
+var LEAD_RESEARCHER_EMAIL   = "htejeda@uci.edu";
 
 
 /******************************************************************************
