@@ -86,7 +86,7 @@ $(document).ready(function (){
         // Set selection variable
         TOPIC_ABILITY_DICT[topic_currently_ranked] = Number($(this).val());
 
-        if (TOPICS_RANKED == 10) {
+        if (TOPICS_RANKED == Object.keys(TOPIC_ABILITY_DICT).length) {
             // Enable "Submit" button
             $('#survey-complete-button').prop('disabled', false);
         }
