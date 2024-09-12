@@ -33,16 +33,13 @@ var DEBUG_SURVEY                    = DEBUG;
 
 //      Survey Information
 var TOPIC_ABILITY_DICT = {
-    "Sports"            : null,
-    "History"           : null,
-    "Geography"         : null,
-    "Entertainment"     : null,
-    "Science"           : null,
-    "Technology"        : null,
-    "Politics"          : null,
-    "Mythology"         : null,
-    "Religion"          : null,
-    "Culture & Society" : null
+    "Sports"                : null,
+    "History"               : null,
+    "Geography"             : null,
+    "Entertainment"         : null,
+    "Science & Technology"  : null,
+    "Politics"              : null,
+    "Culture & Society"     : null
 };
 var TOPICS_RANKED                   = 0;
 

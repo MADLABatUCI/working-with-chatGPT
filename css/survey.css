@@ -170,15 +170,7 @@ input[name="Entertainment"] {
     width: 100%;
     height: 1.5em
 }
-input[name="Science"] {
-    position:relative;
-    display: block;
-    margin: auto;
-    z-index: 1;
-    width: 100%;
-    height: 1.5em
-}
-input[name="Technology"] {
+input[name="Science & Technology"] {
     position:relative;
     display: block;
     margin: auto;
@@ -187,22 +179,6 @@ input[name="Technology"] {
     height: 1.5em
 }
 input[name="Politics"] {
-    position:relative;
-    display: block;
-    margin: auto;
-    z-index: 1;
-    width: 100%;
-    height: 1.5em
-}
-input[name="Mythology"] {
-    position:relative;
-    display: block;
-    margin: auto;
-    z-index: 1;
-    width: 100%;
-    height: 1.5em
-}
-input[name="Religion"] {
     position:relative;
     display: block;
     margin: auto;
