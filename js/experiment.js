@@ -37,7 +37,7 @@ import {
 var CURRENT_TASK                = 1;
 var TOTAL_TRIALS                = 40;
 var EXPLANATION_OPTIONS         = 1;
-var DATA_FILE                   = "data/openquestions_366_12sep2024_explanationstyle01_v01.json";
+var DATA_FILE                   = "data/openquestions_336_explanationstyle01_v02.json";
 
 //      Database Path
 var TRIAL_DB_PATH               = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/trialData';
