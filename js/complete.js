@@ -68,7 +68,9 @@ $(document).ready(function (){
         //  Redirect URL for Open Ended Experiment 01 (new) 10 Sep. 2024
         //window.location.replace("https://app.prolific.com/submissions/complete?cc=C1031R79");
         //  Redirect URL for Open Ended Experiment 01 (new) 12 Sep. 2024 (1 exp style)
-        window.location.replace("https://app.prolific.com/submissions/complete?cc=CS7WXECA");
+        //window.location.replace("https://app.prolific.com/submissions/complete?cc=CS7WXECA");
+        //  Redirect URL for Open Ended Experiment 01 (new) 12 Sep. 2024 (1 exp style)
+        window.location.replace("https://app.prolific.com/submissions/complete?cc=CCKXO7T3");
     }
 
     function submitFeedback() {
